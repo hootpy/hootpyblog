@@ -1,0 +1,26 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getAllTags, tagUrl } from "../../lib/posts";
+
+const posts = await getCollection("posts");
+const tagCounts = getAllTags(posts);
+---
+
+<BaseLayout title="Tags" description="Browse all tags on Hootpy Blog">
+  <section class="listing-page">
+    <a class="back-link" href="/">← Back to all posts</a>
+    <h1>Tags</h1>
+    <ul class="tag-cloud">
+      {
+        [...tagCounts.entries()]
+          .sort(([a], [b]) => a.localeCompare(b))
+          .map(([tag, count]) => (
+            <li>
+              <a href={tagUrl(tag)}>{tag}</a> ({count})
+            </li>
+          ))
+      }
+    </ul>
+  </section>
+</BaseLayout>

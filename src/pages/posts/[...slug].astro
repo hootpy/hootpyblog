@@ -1,0 +1,72 @@
+---
+import { getCollection, render, type CollectionEntry } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import {
+  formatPostDate,
+  getCoverUrl,
+  getPostTags,
+  tagUrl,
+} from "../../lib/posts";
+import { DEFAULT_COVER } from "../../lib/constants";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("posts");
+  return posts.map((post: CollectionEntry<"posts">) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props as { post: CollectionEntry<"posts"> };
+const tags = getPostTags(post);
+const coverUrl = getCoverUrl(post.data.coverImage);
+const { Content } = await render(post);
+const giscusAttributes: Record<string, string | boolean> = {
+  "data-repo": "hootpy/hootpyblog",
+  "data-repo-id": "R_kgDOUPaKng",
+  "data-category": "General",
+  "data-category-id": "DIC_kwDOUPaKns4DE8fV",
+  "data-mapping": "title",
+  "data-strict": "0",
+  "data-reactions-enabled": "1",
+  "data-emit-metadata": "0",
+  "data-input-position": "top",
+  "data-theme": new URL("/giscus-theme.css", Astro.site).toString(),
+  "data-lang": "en",
+  crossorigin: "anonymous",
+  async: true,
+};
+---
+
+<BaseLayout title={post.data.title} description={post.data.description}>
+  <article class="post">
+    <a class="back-link" href="/">← Back to all posts</a>
+    <header class="post-header">
+      <h1>{post.data.title}</h1>
+      <p>{post.data.description}</p>
+      <time datetime={post.data.date.toISOString()}
+        >{formatPostDate(post.data.date)}</time
+      >
+    </header>
+    {
+      coverUrl !== DEFAULT_COVER && (
+        <img class="post-cover" src={coverUrl} alt="" />
+      )
+    }
+    <div class="post-content"><Content /></div>
+    {
+      tags.length > 0 && (
+        <footer class="post-tags">
+          <strong>Tags:</strong>
+          {tags.map((tag) => (
+            <a href={tagUrl(tag)}>{tag}</a>
+          ))}
+        </footer>
+      )
+    }
+    <section class="post-comments" aria-label="Comments">
+      <script is:inline src="https://giscus.app/client.js" {...giscusAttributes}
+      ></script>
+    </section>
+  </article>
+</BaseLayout>

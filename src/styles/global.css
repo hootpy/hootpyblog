@@ -1,0 +1,407 @@
+@import "tailwindcss";
+
+:root {
+  --base03: #002b36;
+  --base02: #073642;
+  --base01: #586e75;
+  --base00: #657b83;
+  --base0: #839496;
+  --base1: #93a1a1;
+  --base2: #eee8d5;
+  --yellow: #b58900;
+  --orange: #cb4b16;
+  --logo-accent: #ffb347;
+  --red: #dc322f;
+  --magenta: #d33682;
+  --violet: #6c71c4;
+  --blue: #268bd2;
+  --cyan: #2aa198;
+  --green: #859900;
+  --ink: var(--base1);
+  --muted: var(--base0);
+  --strong: color-mix(in srgb, var(--base1) 70%, var(--base2));
+  --soft: var(--base02);
+  --link: var(--blue);
+  --border: var(--base00);
+  --font-mono: "Intel One Mono Variable", "SFMono-Regular", Consolas, monospace;
+  font-family: var(--font-mono);
+  color: var(--ink);
+  color-scheme: dark;
+  font-size: 16px;
+  line-height: 1.54;
+  text-rendering: optimizeLegibility;
+}
+
+html {
+  min-width: 320px;
+  background: var(--base03);
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+::selection {
+  background: var(--base01);
+  color: var(--base1);
+}
+
+.site-sidebar {
+  position: fixed;
+  inset: 0 auto 0 0;
+  z-index: 1;
+  width: 300px;
+  overflow-y: auto;
+  padding: 50px 20px;
+  background: var(--soft);
+  text-align: right;
+}
+
+.site-logo {
+  display: block;
+  flex: 0 0 auto;
+  background: transparent url("/logo.png") right center / contain no-repeat;
+}
+
+.site-logo--large {
+  width: 220px;
+  height: 88px;
+  margin: 0 0 16px auto;
+}
+
+.site-description {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.site-nav {
+  margin-top: 30px;
+  padding-top: 25px;
+}
+
+.site-nav::before {
+  display: block;
+  width: 80px;
+  height: 5px;
+  margin: -25px 0 20px auto;
+  background: var(--yellow);
+  content: "";
+}
+
+.site-nav a {
+  display: block;
+  margin: 8px 0;
+  color: var(--base1);
+}
+
+.page-shell {
+  width: min(100% - 40px, 720px);
+  margin: 0 auto;
+  padding: 20px 0 60px;
+  overflow-wrap: anywhere;
+}
+
+.home .page-shell {
+  width: auto;
+  max-width: none;
+  margin-left: 300px;
+  padding: 20px;
+}
+
+.post-index {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+}
+
+.post-index-item {
+  margin: 0 0 18px;
+  font-size: 13px;
+}
+
+.post-index > .post-index-item {
+  min-width: 0;
+  margin: 0;
+}
+
+.post-index-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 10px;
+  color: var(--base01);
+}
+
+.post-index-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 8px;
+}
+
+.post-index-meta a {
+  color: var(--logo-accent);
+}
+
+.post-index-item h2 {
+  margin: 4px 0 0;
+  font-family: inherit;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.35;
+}
+
+.post-index > .post-index-item h2 {
+  margin-top: 6px;
+  font-size: 19px;
+  font-weight: 500;
+}
+
+.post-index-description {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.compact-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 24px 30px;
+}
+
+.site-logo--small {
+  width: 96px;
+  height: 38px;
+  background-position: left center;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 24px;
+  font-size: 14px;
+}
+
+.post-header h1,
+.listing-page h1,
+.post-content h1,
+.post-content h2 {
+  color: var(--strong);
+  font-family: var(--font-mono);
+  line-height: 1.35;
+}
+
+.post-header h1,
+.listing-page h1 {
+  margin: 0 0 10px;
+  font-size: clamp(2rem, 7vw, 3rem);
+}
+
+.post-header h1::after,
+.listing-page h1::after {
+  display: block;
+  width: 70px;
+  margin-top: 12px;
+  border-bottom: 2px solid var(--yellow);
+  content: "";
+}
+
+.post-header p {
+  margin: 18px 0 5px;
+  color: var(--muted);
+  font-size: 17px;
+}
+
+.post-header time {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.post-cover {
+  width: 100%;
+  max-height: 440px;
+  margin: 28px 0 0;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.post-content {
+  margin-top: 36px;
+}
+
+.post-content :is(h1, h2, h3, h4) {
+  margin: 1.5em 0 0.6em;
+}
+
+.post-content h1 {
+  font-size: 2rem;
+}
+
+.post-content h2 {
+  font-size: 1.6rem;
+}
+
+.post-content p {
+  margin: 24px 0;
+  line-height: 1.65;
+}
+
+.post-content ul,
+.post-content ol {
+  margin: 20px 0;
+  padding-left: 28px;
+}
+
+.post-content ul {
+  list-style: disc;
+}
+
+.post-content ol {
+  list-style: decimal;
+}
+
+.post-content li {
+  margin: 7px 0;
+}
+
+.post-content blockquote {
+  margin: 24px 0;
+  padding-left: 16px;
+  border-left: 3px solid var(--cyan);
+  color: var(--base1);
+}
+
+.post-content code {
+  border-radius: 5px;
+  background: var(--base02);
+  padding: 2px 5px;
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+.post-content pre {
+  max-width: 100%;
+  overflow-x: auto;
+  margin: 24px 0;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--base02);
+}
+
+.post-content pre code {
+  padding: 0;
+  background: transparent;
+}
+
+.post-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.post-content table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+}
+
+.post-content th,
+.post-content td {
+  padding: 8px;
+  border: 1px solid var(--border);
+  text-align: left;
+}
+
+.post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 36px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+.post-tags a,
+.tag-cloud a {
+  display: inline-block;
+  padding: 3px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--base02);
+}
+
+.post-comments {
+  margin-top: 40px;
+}
+
+.listing-page h1 {
+  margin-bottom: 32px;
+}
+
+.tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.single-column-list {
+  max-width: 620px;
+}
+
+.site-footer {
+  padding: 10px 20px 30px;
+  color: var(--base01);
+  font-size: 12px;
+  text-align: center;
+}
+
+.site-footer a {
+  color: var(--base00);
+}
+
+@media (max-width: 1300px) {
+  .post-index {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1000px) {
+  .post-index {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 630px) {
+  .site-sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 35px 20px;
+  }
+
+  .home .page-shell {
+    margin-left: 0;
+    padding: 30px 20px;
+  }
+
+  .compact-header {
+    padding: 20px;
+  }
+}

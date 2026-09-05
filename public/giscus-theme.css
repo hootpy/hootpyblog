@@ -1,0 +1,128 @@
+@font-face {
+  font-family: "Intel One Mono Variable";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 300 700;
+  src: url("https://cdn.jsdelivr.net/fontsource/fonts/intel-one-mono:vf@5.3.0/latin-wght-normal.woff2")
+    format("woff2-variations");
+}
+
+@font-face {
+  font-family: "Intel One Mono Variable";
+  font-style: italic;
+  font-display: swap;
+  font-weight: 300 700;
+  src: url("https://cdn.jsdelivr.net/fontsource/fonts/intel-one-mono:vf@5.3.0/latin-wght-italic.woff2")
+    format("woff2-variations");
+}
+
+:host,
+html {
+  --font-family-sans:
+    "Intel One Mono Variable", "SFMono-Regular", Consolas, monospace;
+  --font-family-monospace:
+    "Intel One Mono Variable", "SFMono-Regular", Consolas, monospace;
+  --font-family-default: var(--font-family-sans);
+  color-scheme: dark;
+}
+
+html,
+body {
+  background: #002b36;
+}
+
+main {
+  --color-prettylights-syntax-comment: #657b83;
+  --color-prettylights-syntax-constant: #2aa198;
+  --color-prettylights-syntax-entity: #6c71c4;
+  --color-prettylights-syntax-storage-modifier-import: #93a1a1;
+  --color-prettylights-syntax-entity-tag: #859900;
+  --color-prettylights-syntax-keyword: #dc322f;
+  --color-prettylights-syntax-string: #2aa198;
+  --color-prettylights-syntax-variable: #cb4b16;
+  --color-prettylights-syntax-brackethighlighter-unmatched: #dc322f;
+  --color-prettylights-syntax-invalid-illegal-text: #eee8d5;
+  --color-prettylights-syntax-invalid-illegal-bg: #dc322f;
+  --color-prettylights-syntax-carriage-return-text: #eee8d5;
+  --color-prettylights-syntax-carriage-return-bg: #dc322f;
+  --color-prettylights-syntax-string-regexp: #859900;
+  --color-prettylights-syntax-markup-list: #b58900;
+  --color-prettylights-syntax-markup-heading: #268bd2;
+  --color-prettylights-syntax-markup-italic: #93a1a1;
+  --color-prettylights-syntax-markup-bold: #eee8d5;
+  --color-prettylights-syntax-markup-deleted-text: #eee8d5;
+  --color-prettylights-syntax-markup-deleted-bg: #7a2424;
+  --color-prettylights-syntax-markup-inserted-text: #eee8d5;
+  --color-prettylights-syntax-markup-inserted-bg: #3f5700;
+  --color-prettylights-syntax-markup-changed-text: #eee8d5;
+  --color-prettylights-syntax-markup-changed-bg: #7c3a12;
+  --color-prettylights-syntax-markup-ignored-text: #93a1a1;
+  --color-prettylights-syntax-markup-ignored-bg: #174c67;
+  --color-prettylights-syntax-meta-diff-range: #6c71c4;
+  --color-prettylights-syntax-brackethighlighter-angle: #657b83;
+  --color-prettylights-syntax-sublimelinter-gutter-mark: #586e75;
+  --color-prettylights-syntax-constant-other-reference-link: #2aa198;
+  --color-btn-text: #93a1a1;
+  --color-btn-bg: #073642;
+  --color-btn-border: #657b83;
+  --color-btn-shadow: 0 0 transparent;
+  --color-btn-inset-shadow: 0 0 transparent;
+  --color-btn-hover-bg: #0c4552;
+  --color-btn-hover-border: #839496;
+  --color-btn-active-bg: #124b57;
+  --color-btn-active-border: #93a1a1;
+  --color-btn-selected-bg: #002b36;
+  --color-btn-primary-text: #002b36;
+  --color-btn-primary-bg: #859900;
+  --color-btn-primary-border: #93a1a1;
+  --color-btn-primary-shadow: 0 0 transparent;
+  --color-btn-primary-inset-shadow: 0 0 transparent;
+  --color-btn-primary-hover-bg: #98ad00;
+  --color-btn-primary-hover-border: #eee8d5;
+  --color-btn-primary-selected-bg: #718200;
+  --color-btn-primary-selected-shadow: 0 0 transparent;
+  --color-btn-primary-disabled-text: rgb(0 43 54 / 60%);
+  --color-btn-primary-disabled-bg: rgb(133 153 0 / 60%);
+  --color-btn-primary-disabled-border: rgb(147 161 161 / 40%);
+  --color-action-list-item-default-hover-bg: rgb(131 148 150 / 12%);
+  --color-segmented-control-bg: rgb(101 123 131 / 20%);
+  --color-segmented-control-button-bg: #073642;
+  --color-segmented-control-button-selected-border: #839496;
+  --color-fg-default: #93a1a1;
+  --color-fg-muted: #839496;
+  --color-fg-subtle: #657b83;
+  --color-canvas-default: #002b36;
+  --color-canvas-overlay: #073642;
+  --color-canvas-inset: #002b36;
+  --color-canvas-subtle: #073642;
+  --color-border-default: #657b83;
+  --color-border-muted: #586e75;
+  --color-neutral-muted: rgb(101 123 131 / 40%);
+  --color-accent-fg: #268bd2;
+  --color-accent-emphasis: #268bd2;
+  --color-accent-muted: rgb(38 139 210 / 40%);
+  --color-accent-subtle: rgb(38 139 210 / 12%);
+  --color-success-fg: #859900;
+  --color-attention-fg: #b58900;
+  --color-attention-muted: rgb(181 137 0 / 40%);
+  --color-attention-subtle: rgb(181 137 0 / 15%);
+  --color-danger-fg: #dc322f;
+  --color-danger-muted: rgb(220 50 47 / 40%);
+  --color-danger-subtle: rgb(220 50 47 / 12%);
+  --color-primer-shadow-inset: 0 0 transparent;
+  --color-scale-gray-7: #073642;
+  --color-scale-blue-8: #0b4055;
+  --color-social-reaction-bg-hover: var(--color-scale-gray-7);
+  --color-social-reaction-bg-reacted-hover: var(--color-scale-blue-8);
+  font-family: var(--font-family-default);
+}
+
+.gsc-homepage-bg {
+  background-color: #002b36;
+}
+
+.gsc-comment-box,
+.gsc-comment,
+.gsc-reactions {
+  border-radius: 8px;
+}

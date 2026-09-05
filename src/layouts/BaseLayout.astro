@@ -1,0 +1,76 @@
+---
+import { SITE_TITLE, SITE_DESCRIPTION } from "../lib/constants";
+import "@fontsource-variable/intel-one-mono/wght.css";
+import "@fontsource-variable/intel-one-mono/wght-italic.css";
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = SITE_TITLE, description = SITE_DESCRIPTION } = Astro.props;
+const pageTitle = title === SITE_TITLE ? title : `${title} | ${SITE_TITLE}`;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+const isHome = Astro.url.pathname === "/";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#002b36" />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    <link
+      rel="sitemap"
+      type="application/xml"
+      href={new URL("/sitemap-index.xml", Astro.site)}
+    />
+    <script
+      is:inline
+      defer
+      src="https://cloud.umami.is/script.js"
+      data-website-id="575df21d-b67e-4766-ab2e-292f21a02298"></script>
+    <title>{pageTitle}</title>
+  </head>
+  <body class:list={{ home: isHome }}>
+    {
+      isHome ? (
+        <aside class="site-sidebar">
+          <a
+            class="site-logo site-logo--large"
+            href="/"
+            aria-label={SITE_TITLE}
+          />
+          <p class="site-description">{SITE_DESCRIPTION}</p>
+          <nav class="site-nav" aria-label="Primary navigation">
+            <a href="/">Home</a>
+            <a href="/about/">About</a>
+            <a href="/hire-me/">Hire Me</a>
+          </nav>
+        </aside>
+      ) : (
+        <header class="compact-header">
+          <a
+            class="site-logo site-logo--small"
+            href="/"
+            aria-label={SITE_TITLE}
+          />
+        </header>
+      )
+    }
+    <main class="page-shell">
+      <slot />
+    </main>
+    {
+      !isHome && (
+        <footer class="site-footer">
+          <a href="/">{SITE_TITLE}</a> · <a href="/about/">About</a> ·
+          <a href="/hire-me/">Hire Me</a>
+        </footer>
+      )
+    }
+  </body>
+</html>
